@@ -3,3 +3,39 @@ Node.js notes:
 debug tools:
 
 node inspactor / eclipse
+
+node --debug runs debug mode
+
+node foo.js --debug passes it to the script
+
+Sends signal to flip node into debug mode:
+
+kill -s USR1 PID
+
+
+// express MVC framewkr
+// verb oriented
+
+var app = require('express').createServer();
+
+app.get( '/', function ( req, res ) {
+	res.send( 'hello world' );
+})
+
+app.listen ( 3000 );
+
+Templating
+
+- haml
+- tj
+- 
+
+
+NODE ARCHITECTURES:
+Key Points:
+- javascript
+- event driven
+
+* user work which isn't user-facing out of main event loop
+
+
