@@ -1,0 +1,216 @@
+Mobile workshowp
+
+-not all tabs are active in browsers
+
+Browsers:
+Proxy Based:
+
+Opera Mini
+Silk Amazon
+
+more than 40 browsers with diff names and market share
+
+Sites for compoat:
+
+mobilehtml5.org
+
+Debug:
+
+Notes:
+
+Hard to detect
+No debugging tools
+
+
+Safari, Opera Mobile, Android(firefox & chrome), Nokia, UC Browser, IE (windows
+phone)
+(gs.statcounter.com)
+
+Android default browser:
+not chrome (chrome is beta)
+Today: android browser is moving to chrome
+uc browsers (proxy / pseudo)
+
+
+Rendering engine vs execution engine
+webkit > opera
+
+Rendering engines
+-webkit
+-gecko
+-presto
+-trident
+
+exec engines
+-v8
+-jagermonkey
+-spquirrel fish
+-carakan
+
+webviews are slower than webkit, some diffs (not safari)
+(links within facebook app do not run the same js engine)
+
+pseudo browsers:
+native apps with webview (how is this not frames?)
+
+
+opera mini is a proxy based browser:
+no rendering or js engine on client side
+cloud based browser
+
+Android supports diff native browsers (rendering engines and js engines)
+
+Hybrid:
+
+phonegap
+
+client vs local (often confusing)
+
+native vs JS (web)
+
+language is not clear, no taxonomy
+
+wtf is native?
+wtf is webapp?
+
+Standards:
+
+HTML5:
+big orange umbrella
+w3c standards in draft
+some are other w3c standards (css)
+
+New Tech(fragmentation):
+sony xperia has hover event
+3d
+
+Testing:
+mobilexweb.com/emulators
+www.perfectomobile.com
+www.deviceanywhere.com
+
+JS inspectors:
+
+adobe.com/go/shadow
+server component
+client extension for chrome
+browse the web with chrome and all connected device will follow
+weinre (remote web inspector) (no break points, no js)
+
+iwebinspector tool
+only works with ios
+
+
+BATTERY LIFE SUCKS!
+
+don't use jquery just for document.getElementById! it cost power to use / parse
+jQuery
+
+jquery.js ~ 4 joules
+~5000 jquery parsings per charge
+
+amazon consumes 17% energy in a non used JS
+
+Don't parse what you don't need to
+
+can hide a js tag in a comment to save parsing and then uncomment and eval it
+later??
+
+Two new platforms coming this year
+
+buntu gecko OS (spain / uk / germany) (gecko)
+samsung (webkit)
+
+
+Use this to adjust the screen size to be relative to the device:
+
+<meta name="viewport" content="width=device-width">
+
+
+Sometimes it's better to be inline for js (depends on the website)
+offline storage api
+
+
+Pixel Density:
+- new way to determine size
+
+// 240 320  480 640
+   .75  1   1.5  2
+
+320 pixel standard will be amplified via browser
+
+window.devicePixelRatio || window.webkitDevicePixelRatio
+
+works on most touch platforms (modern)
+
+when you design for iphone / android design for 320
+
+can use this property to determine the size of the image to send
+
+ipad 3 is 4 times larger than ipad 1!! 4 times as much data if you serve
+native resolution
+
+can define the device icons to be Data URI (because users can add the page to
+the homescreen while it's offline and not get the icon)
+
+Cool HTML5 Tricks:
+
+contenteditable makes it editable inline
+
+works on IOS since IOS 5:
+
+localizations are weird
+
+
+
+<section id="editable" contenteditable>
+<h1>My title</h1>
+<ul>
+<Myli>JavaScript
+<li>Python
+<li>VBScript
+</ul>
+</section>
+
+
+Javascript:
+
+no fullscreen api working properly unless IOS
+
+Webworkers:
+
+
+
+local storage:
+string only
+5 mb limit (unles user gives permissions)
+
+
+Server Sent data:
+
+EventSource (it's like a long held open request)
+-one way
+
+Sockets (two way) needs a server
+
+Cached connections
+
+
+Geolocation:
+
+IE9 supported
+
+Video:
+
+avoid the video html 5 api on mobile because it's always full screen
+
+Final thoughts:
+
+performance
+good practices
+multi-platform
+future friendly
+
+
+
+
