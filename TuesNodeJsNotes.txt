@@ -1,0 +1,5 @@
+Node.js notes:
+
+debug tools:
+
+node inspactor / eclipse
