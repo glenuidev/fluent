@@ -37,5 +37,37 @@ Key Points:
 - event driven
 
 * user work which isn't user-facing out of main event loop
+* using cluster you can listen to the same port multiple time
+- might be cool for hoxy
 
 
+// clustering
+
+var cluster = require ('cluster');
+var http = require('http');
+
+Node Proxies:
+* node-proxy
+* squid
+* varnish
+* haproxy
+* apache (something)
+
+performance:
+
+unbundle SSL
+stud, stunnel, etc
+
+
+Sharding:
+
+Disclaimer:
+Sharding is hard, See CAP
+
+Transports:
+
+- Websockets
+- Adobe flash socket
+- ajax long polling
+- forever iframe
+- jsonp polling
