@@ -1,0 +1,58 @@
+// High Performance Snippets
+// Steve S.
+// stevesouders.com/docs/fluent-snippts-20120530.pptx
+// full house!
+
+some requests in China are blocked...vendor scripts (from twitter) can prevent page load
+
+IE had a 20 sec timeout on requests
+Some can be as long as 120 Seconds
+
+Front end SPOF (single point of failure)
+
+Stylesheets will block all rendering, get them loaded early
+
+Load scripts async (not <script>)
+- note..even though it is not used on the page (in the template) it is blocking the experience for all pages that use the template
+- templates team should be rigerous about not injecting syncronous scripts at all levels
+
+webpagetest.org
+
+interesting idea: malicious time-outs?
+
+
+/* 
+BLACK HOLE TESTING
+*/
+blackhole.webpagetest.org 72.66.115.13
+
+setup hosts or proxy to route sub-domains to black-hole
+
+or
+
+setDnsName in webpagetest.org (or local instance) via "script" tab
+
+// blog post
+http://blog.patrickmeenan.com/2011/10/testing-for-frontend-spof.html
+
+
+
+/*
+async loading
+*/
+
+some solutions...
+have the option to pass id to container (pref)
+use doc.write if no container (fall-back)
+
+if document.write() is used at all it will block
+maybe use an iframe to make it smaller
+
+/* 
+longer cache times but self updating
+*/
+
+/*
+FRONT END SPOF IS NOT DETECTED BY METRICS (because it happens async after failures)
+*/
+

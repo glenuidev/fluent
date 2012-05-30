@@ -1,0 +1,45 @@
+// Regex
+quantifiers:
+
+{4,} // at least 4, matching as much as it can is called greedyness
+
+{4,5} // 4 up to 5
+
+a* // zero to infinity
+
+a+ // one time to infinity
+
+a? // zero to 1..permutates through because of greedyness
+
+regexp? // p is optional
+
+most meta characters do not need escaping in brackets
+
+// Counting words
+
+function wordCount ( text ) {
+	
+}
+
+(/<[^>]+./g, '')
+
+(ab|ba) // can be used to store both
+
+^[-+]?[\d.]+$
+
+if you need ^foo$ just compare the two strings
+
+more performant is to strip space from begining then end, instead of doing both at the same time
+
+Dates
+
+\d{4}-(0\d|1[0-2])
+
+avoid greedy quantifirers
+dont forget anchors
+be as specific as possible
+pref non-capturing groups (?:)
+minimize backtracking (going too far then working back...performance "destructive backtracking")
+
+lea.verou.me
+lea@verou.me

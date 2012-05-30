@@ -1,0 +1,149 @@
+//10 things you didn't know hmtl 5 could do
+
+@ebidel
+editor: textedit
+
+CSS layout:
+
+"adaptive display"
+
+CSS3 regions / grid / flex
+
+CSS flexible Box Layout Module
+CSS grid
+CSS heirarchies
+Variables Module Level 1
+
+[so far only chrome!!!]
+CSS flex box "new hottness for app layout"
+
+- children can flex sizes
+- source ordering does not matter
+- display: flex || inline-flex
+- display: box (deprecated)
+
+// flex box example
+// great for mobile great for application layout
+
+div {
+	display: flex;
+	flex-pack: center
+	flex-align: center;
+	flex: 1 0 0
+}
+
+div > div:nth-child(2) {
+	flex: 2 0 0: /*2nd div will be 2x wider */
+}
+
+// combine with media queries
+// demo (chrome only)
+html5-demos.appspot.com/static/css/flexbox/index.html
+
+/* Dynamic CSS */
+
+
+.circle {
+	width: 300px;
+	height: 300px;
+}
+
+div {
+	display: flex;
+	width: calc(100% - 4em);
+	height: calc(100% - 4em);
+	border: 3px solid red;
+	border-radius: 50%;
+	flex-align: center;
+	flex-pack: center;
+}
+
+/* Data bindings */
+/* Angularjs.org */
+
+jsbin.com/ayeres/3
+
+<datalist> (google it)
+
+/*	
+HTML 5 Filesystem API
+CHROME ONLY
+*/
+
+siloed sandboxing
+
+window.webkitRequestFielSystem(
+	TEMPORARY, 			// persistent vs temp
+	1024 * 1024, 		// size
+	initFs, 			// success callback
+	opt_errorHandler 	// opt. error callback, denial of access
+);
+
+github.com/ebidel/filer.js
+
+/*
+HTML5 filesystem stored in IndexedDB
+http://github.com/ebidel/idb.filesystem.js
+*/
+
+
+/*
+Client side downloads
+*/
+
+<a href="#" download="Myfoo.png">download</a>
+// calls native download manager, can be set to whatever
+
+/* efficiently share data */
+Evolution of postMessage();
+// string only
+
+use JSON.stringify / JSON.parse
+//hack
+
+// then
+worker.postMessage({msg: 'look ma'});
+
+//but
+postMessage(newBlob(data.toString(), {type: 'text/plain'}))
+
+// good but these are all still just copies
+worker.webkitPostMessage(arrayBuffer, [arrayBuffer]);
+window.webkitPostMessage(arrayBuffer, targetOrigin, {arrayBuffer});
+// zero copy, pass by reference
+// around 50x faster than postMessage
+
+/*
+Interacting with hardware
+*/
+
+navigator.getuserMedia
+navigator.webkitGetUserMedia
+
+navigator.getusermedia({audio: true, video: true}, function( s )}{
+	var video = document.querYSelector('video')
+	video.src = window.URL.createObj
+})
+
+audio tag
+
+/*
+processing audio
+*/
+
+webaudio api
+
+laod file..pass to api render it out to divs (webkit transform)
+
+<audio> tag
+
+ctx = new webkitAudioContext();
+var audioElement = new Audio();
+audioElement.src = 'sounds/dop_beats.mpd3;
+audioElement.controls = true;
+audioElement.autoplay  true;
+
+
+(see deck)
+
+Bohemian rhapsody shuffler

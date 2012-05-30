@@ -1,0 +1,106 @@
+// Fluent:
+// 8 simple rules for running JS on my page
+// Ken Brewster "pin it button!"
+// @kentbrew
+// http://github.com/kentbrew/Case-Hardened-JavaScript
+
+where is the pinterest API?? TBD
+
+By using the script tag it is effectively using the script tag hack.
+
+Atari!
+
+there is really only one rule: Do not BLOCK! yo.
+
+only use iframes carefully:
+- instrumenting something: knowing about a click before it is activated to the vendor
+
+convention for bundles:
+- widget.source.js
+- widget.js (min)
+
+
+Do not fail to inform me that facebook interactions are connected (licensing issues sux)
+
+Some basics for 3rd party js dev:
+- dependecies
+- protability
+- compatibility
+- security trouble
+
+Principles:
+- No matter how you doc it, someone will screw it up
+- People will want to load your stuff async
+- do not know <html>
+- may not have access to full html (only a part within the framework)
+
+it must not break in IE:
+- it must quetly go away in older versions
+- you must tell me what versions are unsupported
+- you mut test with real human users!!!!!
+- to test, you must own windows xp, vista, 7 and 8
+- you must not ever TRY testing on virtual hardware
+- Be very careful to NOT let M$ update your test machines
+
+// simple async loader
+
+HEAD or BOdy might not exist
+- make your script tag
+- find my first script tag
+- insert your tag before mine
+
+
+(function(d){
+	var f = d.getElementsByTagName('SCRIPT')[0];
+	var s = d.createElemtn('SCRIPT');
+	s.async = true;
+	s.type = 'text/javascript';
+	s.src = '//foo.com/widget.js'; // protocol rel
+	s.setAttribute('data-config', '12345');
+	f.parentNode.insertBefore(s,f);
+})
+
+global namespace
+- your script gets ONE global var, but it is a generated for you
+- wrap in anon funct
+- create a random string
+- global namespace root and your HTML id
+
+
+setting up a script:
+<script src="dude.js" data-config="stuff">var = foo</script>
+find it
+get the data-config
+nuke it
+run it
+
+
+(anon function, self executing) (window, document, {
+	'k': '_' + new Date().GetTime(),
+	'src': /widget.js$
+});
+//
+build structure:
+$ represents the new thing
+
+scriptparentNode.insertBefore(thing);
+script.parentNode.revoeChild(script);
+
+Order of Architecture precidence 
+1. Structure
+- js, read config
+2. Presentation
+- css
+3. Behavior
+- close
+- listen
+- behavior
+
+// Listeners
+
+single listener for the entire thing that you are creaeting (use bubble, look for click, find thing being clicked)
+
+hover based interactions will break your heart (use a library)
+- bad idea because it can break mobile experience (do not assume they have a mouse)
+- ?? mouse out, mouse up events are sorta questionable
+

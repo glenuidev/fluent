@@ -1,0 +1,40 @@
+//10 things you didn't know hmtl 5 could do
+
+@ebidel
+
+CSS layout:
+
+"adaptive display"
+
+CSS3 regions / grid / flex
+
+CSS flexible Box Layout Module
+CSS grid
+CSS heirarchies
+Variables Module Level 1
+
+[so far only chrome!!!]
+CSS flex box "new hottness for app layout"
+
+- children can flex sizes
+- source ordering does not matter
+- display: flex || inline-flex
+- display: box (deprecated)
+
+// flex box example
+// great for mobile great for application layout
+
+div {
+	display: flex;
+	flex-pack: center
+	flex-align: center;
+	flex: 1 0 0
+}
+
+div > div:nth-child(2) {
+	flex: 2 0 0: /*2nd div will be 2x wider */
+}
+
+// combine with media queries
+
+html5-demos.appspot.com/static/css/flexbox/index.html
