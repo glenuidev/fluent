@@ -71,3 +71,61 @@ Transports:
 - ajax long polling
 - forever iframe
 - jsonp polling
+
+Redis:
+
+Using RedisStore with SocketIO
+
+RedisStore
+require('socket.io')
+
+
+// proper way to handle an error
+var http = require ('http');
+
+var req = http.request ({
+	host: 'www.google.com;,
+	path: '/',
+	port: 80,
+	method: 'POST'
+}, function (resonse) { 
+	do stuff with response
+});
+
+
+req.on('error', function (err) {
+ // safely handle the error
+});
+
+// fail safe error catch
+process.on ('uncaughtException', function (err) {
+	console.dir(err);
+});
+
+// once()
+// do something then tell me
+once() is awesome
+
+// Process monitoring
+* Upstart (can do a bunch of stuff with cluster) (is event loop being responsive?)
+* forever (can be included as a module)
+
+// NPM Packing 
+LICENSE README dnsserver.js package.json 
+
+sudo npm install . -g
+
+sudo npm link
+
+"modules is how you seperate things in node"
+- functionaly split code
+- maintaining a bunch of stuff
+- chained dependencies
+
+npm adduser
+
+// incredibly thourough
+npm help (spend the time to get to know npm, it is highly regarded)
+
+
+
