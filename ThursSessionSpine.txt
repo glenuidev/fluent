@@ -1,0 +1,49 @@
+// spine
+// @maccman from twitter
+
+it is about the file where you put everything,
+- factoring things into sections
+
+// structure / building large JS apps
+
+module.exports = User;
+require('user');
+
+"everyone should be using a common set of modules"
+
+Twitter:
+sprockets-commonjs
+
+"assets pipeline"
+
+example: thing.module.js
+
+Note: rails house
+
+ruby / rails developers seem to like coffee script (assuming pre-processing is okay with build scripts?)
+
+
+key to large scale js apps:
+- abstract components
+- every component is an open source library
+- (written as if it is a stand alone lib)
+- instantiated multiple times without adverse affects
+- work without being attached to the DOM (easily testible) (no css IDs, only classes)
+- store state in controllers (not model or dom)
+
+"children shouldn't know anything about their parents"
+
+webkit console debugger: if you click the puase button twice it will automatically create a breakpoint where an error is caused
+$0 - $4 is the last 4 elements you selected
+snapshots
+- take a heap shot
+- manipulate the app
+- take another shot
+- compare
+
+display:none; // 
+
+accessing the DOM is the slowest thing you can do, if you manipulate it do so when it is not attached to the tree
+
+mousemove handlers need to be fast
+
