@@ -1,0 +1,201 @@
+// how webkit renders the web
+// levi weintraub
+// webkit.org
+// chromium.org
+// leviw@chromium.org
+
+:: webkit is a rendering engine
+
+3 primary
+- trident: IE
+- gecko: FF
+- webkit: chrome safari ios android
+
+Webkit is #1 now
+
+KHTML + Konquerer (1998)
+2001 apple fork
+2003 webcocre and safari (broke from KHTML)
+2005 open source
+2008 Chrome win
+2009 Chrome OSX and linux
+2012 Dominant
+
+WEbkit Arch::
+embedding app
+- webkit (component) C++/C#
+-- webcore
+loading
+parsing
+layout
+---js engine
+- v8 or jscore
+- parses and execs page logic
+- allows DOM manip
+---platform
+- network stack
+- graphics
+- front engine
+- native widgets
+- apbstraction of native comps
+
+WEbcore:
+flow...
+loader -> 
+- network engine
+- parser (builds dom tree and indentifies resources (outside the orig url))
+loader -> parser -> DOM Tree
+
+DOM
+- api to JS
+- render tree
+- full representation of the document
+- document API
+- shadow DOM (oohh!)
+
+-------------
+Render Forest
+-------------
+Render Objects
+- owned by Dom tree
+- only exists for endered content
+- responsible for layout and pain
+- answers DOM API measurement requests
+
+Render Tree?
+
+markup -> Dom representation (HTMLBodyElement) -> render objects (RenderBlock)
+
+anonymous renderes
+- inserted into the render tree (where tbody comes from)
+
+Style Tree:
+- contains a computed style value for renderers
+owned by the render tree
+RenderObjects share RenderStyles
+RenderStyles share data members? (whats a data member?)
+
+Render Layer Tree (swiss army knife for render tree)
+- helper class for rendering
+- at least one per document, sparsely maps to renderers
+used for <video>, <canvas> with WebGL,position, transformed, transparent, masked, clipped, scrollable, or reflected elements
+
+!Each rendered layer has two ordered lists
+- start rendereding from back to front (negative z to self to positive)
+
+with software you never allocate more than you can see on the screen..but with web there is scroll..try to preserve
+hardware is excellent at rendering transparency where software has to repaint pixels
+
+line box tree:
+owned by RenderBlock
+one RootInlineBox per line
+RootInlineBox has list of InlineBoxes in that line
+rely on render blocks to tell them what color they are or where they are
+depending on how lines wrap
+(see ipone image "line box tree")
+
+LAYOUT!
+
+lazy layout
+changes to DOM marks renderers as dirty layout before paint or measurements from JS
+- save old repaint rect
+- bring in updates from DOM
+- determine our preferred width
+- layout children to determine height
+- repaint difference between old and new rect
+
+------------------
+avoid extrea layouts
+------------------
+
+- do all possible work in detched DOM before attaching
+- set styles and read back measurments separately
+
+
+------------------
+line layouts
+------------------
+
+RenderBlock owns lines and tree of floats
+determine width of lines (block width - floats)
+iterate over characters/inlines
+use ICU & font measurement to determine line break locations
+create TextRuns and run UBA on lines
+
+------------------
+review
+------------------
+
+Loader - parser - dom tree - render tree
+
+------------------
+painting
+------------------
+triggers:
+animations, blinking carets, layout, etc. trigger invalidations to embedder app
+app collects dirty rects, triggers paint
+tree walk fromroot RenderLayer
+RenderObjects and INlineBoxes paint
+GraphicsContext abstraction
+
+------------------
+hit testing
+------------------
+- constantly hit testing during mouse move
+- multiple phases
+- tree walk from root RenderLayer
+- RenderLayer transforms into local coordinates
+
+------------------
+new stuff
+------------------
+component model
+based on shadow DOM (form text-area)
+hides implementation
+- events re-targeted
+- shadow children inaccessible by regular DOM
+defined interface
+"allows web developers to take advantage of shadow dom without using IFRAME"
+
+----------------
+integer layout
+----------------
+layout currently uses
+1.5x (zoom is bad)
+the more objects you stack the more layout errors you can accumulate
+
+----------------
+sub-pixel layout
+----------------
+integers replaced by fixed-point unit
+boxes snapped to pixel values
+supports sub-pixel CSS values
+error does not accumulate (much slower if it does)
+
+----------------
+CSS regions - rad!
+----------------
+thread content through disjoint parts of page
+region styling
+arbitrary shapes and exclusions
+text can thread and wrap accordingly
+shapes and exclusions (arbitray polygons)
+text flows around them
+
+----------------
+multi-process browsers
+----------------
+centralized resources
+- networking
+- cache
+- compositor
+- plugins
+safety through sandboxing
+multiple mainloops ~ multi-core
+
+
+why are animations in safari faster than chrome?
+- multiprocessors (IPC marshalling overhead)
+- not using native animation framework for Mac OS (might change)
+
+
