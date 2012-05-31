@@ -1,0 +1,71 @@
+// rethinking twitter.com performace
+
+javascript re-use patterns:
+
+@angustweets
+
+
+::prototypes
+native js agent of re-use
+- syntax difficult
+- new constructor (hints at classes)
+- inheritance syntax is gnar
+- single inheritance
+
+//ex
+var Animal = function (){}
+
+Animal call
+WalkingAnimal.prototyp = new Animal();
+
+:: Class syntax
+- relationshipt betwee 'this' and 'super' is gnar
+
+:: Class heirarchies
+
+Animal
+- walking
+-- cat
+-- duck
+- swimming
+-- croc
+-- duck
+
+Single heirarchies dont support multiple parents
+
+Classical inheritance
+- requires up front knowledge
+
+
+Beyond Classification
+"exploiting likeness" - "what do they have in common" vs "what are they"
+Antero Taivalsaari - journal of OOP 1997
+
+JS:
+any property can be assigned to any object (mixin)
+example: use extend to extend object
+extend croc with walking and swimming (multiple 'inheritance')
+
+Property copy mixins :: did not work
+
+no hierarchical constraints (danger you can clobber)
+if you want to use a mixin you need intimate knowledge
+
+//
+Functional Mixins ::
+//
+run the function in the context of the object (call or apply on the mixin function and obtain the properties)
+ex:
+withWalking.call(Crocodile.prototype);
+withSmimming.call(Crocodile.prototype);
+
+- Mixins as verbs instead of nouns
+- mixins are functions (powerful / scope)
+- works with the language
+- augment without clobber
+
+/* implementation at twitter */
+- layer of abstraction to help deal with the browser
+
+Storage()
+baseStorage()
