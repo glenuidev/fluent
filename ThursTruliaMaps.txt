@@ -1,0 +1,17 @@
+// Trulia -> maps in the browser
+
+types of maps:
+google maps
+poymaps
+modestmaps
+leaflet
+
+github.com/shashashasha/
+prag.ma/code/htmapl
+kartograph.org
+
+web native mapping
+interactive
+
+css animations
+

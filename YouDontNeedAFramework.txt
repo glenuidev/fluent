@@ -1,0 +1,32 @@
+// you don't need a framework for that
+
+d.querySelector('li').classList.add('first');
+
+//css
+li:first-of-type {
+	
+	
+}
+
+:nth-of-type // not IE 7+8
+
+getElementsByClassNmae('foo');
+- dom node
+
+jquery( '.bar' );
+
+both return live node list
+
+// research
+livenode list vs static node list
+
+// tips for structuring library stacking
+// !! dom needs to be there yo!
+do vanila stuff critical to view before loading libraries
+- maybe use jquery for deferred loading?
+
+? attaching an event to a live list
+when you use vanilla js you have to attache the event to a live
+
+use CSS3 for animations, NOT JAVASCRIPT!
+

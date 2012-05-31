@@ -69,3 +69,7 @@ withSmimming.call(Crocodile.prototype);
 
 Storage()
 baseStorage()
+
+composite mixins
+
+
